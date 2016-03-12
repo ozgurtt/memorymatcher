@@ -48,7 +48,7 @@ Game.Play.prototype = {
     this.matchSnd.volume = 0.3;
 
     this.applauseSnd = this.game.add.sound('applause');
-    this.applauseSnd.volume = 0.3;
+    this.applauseSnd.volume = 0.2;
 
     this.shuffleSnd = this.game.add.sound('shuffle');
     this.shuffleSnd.volume = 0.3;
