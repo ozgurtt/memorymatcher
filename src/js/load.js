@@ -51,6 +51,12 @@ Game.Load.prototype = {
     this.game.load.audio('match', 'assets/audio/match.wav');
     this.game.load.audio('applause', 'assets/audio/applause.wav');
 
+    this.game.load.image('easy','assets/images/easy.png');
+    this.game.load.image('normal','assets/images/normal.png');
+    this.game.load.image('hard','assets/images/hard.png');
+    this.game.load.atlasXML('startbtn', 'assets/images/startbtn.png','assets/atlas/startbtn.xml'); 
+
+
     // Music Track
     // this.game.load.audio('music','soundtrack.mp3');
 

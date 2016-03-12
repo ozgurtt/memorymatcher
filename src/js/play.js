@@ -31,6 +31,19 @@ Game.Play.prototype = {
   create: function() {
     this.game.world.setBounds(0, 0 ,Game.w ,Game.h);
 
+
+    if (difficulty === 'easy') {
+      pairs = 6;
+      card_cols = 4;
+    }else if (difficulty === 'normal') {
+      pairs = 8;
+      card_cols = 4;
+    }else if (difficulty === 'hard') {
+      pairs = 10;
+      card_cols = 5;
+    }
+
+
     this.matchSnd = this.game.add.sound('match');
     this.matchSnd.volume = 0.3;
 
@@ -43,7 +56,6 @@ Game.Play.prototype = {
 
     this.startTime = this.game.time.time;
 
-    var board_size = 4;
     var starter_deck = [];
     var drawn_deck = [];
     var shuffled_deck = [];
@@ -52,7 +64,7 @@ Game.Play.prototype = {
       starter_deck.push(i);
     }
 
-    for(var i=0;i< board_size*board_size/2;i++) {
+    for(var i=0;i< pairs;i++) {
       var randomCard = Phaser.ArrayUtils.removeRandomItem(starter_deck);
       drawn_deck.push(randomCard);
       drawn_deck.push(randomCard);
@@ -60,26 +72,26 @@ Game.Play.prototype = {
 
     shuffled_deck = this.shuffle(drawn_deck);
 
-    var c = 0;
     cards = this.game.add.group();
 
+    // pairs = 8; 
+    // card_cols = 4;
+
     //5 to 10 pairs
-    var margin = (Game.w-(160*(board_size-1)))/2; //half sprite size + space size minus the gap after the last piece
-    for (var j = 0; j < board_size;j++) {
-       for (var i = 0; i < board_size; i++) {
-         var x = i*150 + margin;
-         var y = j*150 + 160;
+    var margin = (Game.w-(160*(card_cols-1)))/2; //half sprite size + space size minus the gap after the last piece
 
-         // var card = new Card(this.game, x, y, 'animals', shuffled_deck[c]);
-         var card = new Card(this.game, 0, 0, 'animals', shuffled_deck[c]);
-         this.game.add.tween(card).to({x: x, y: y}, 300).start()
-         // card.events.add.onInputUp.add(, this);
-         card.back.events.onInputUp.add(this.check, this);
-         cards.add(card)
+    for (var i = 0;i < pairs*2;i++) {
+      var x = (i%card_cols) * 150 + margin;
+      var y = Math.floor(i/card_cols)*150 + 150;
+      var card = new Card(this.game, 0, 0, 'animals', shuffled_deck[i]);
+      this.game.add.tween(card).to({x: x, y: y}, 300).start()
 
-         c++;
-       }
+      card.back.events.onInputUp.add(this.check, this);
+      cards.add(card)
+
     }
+    // cards.x = Game.w/2 - cards.width;
+    // cards.y = Game.h/2 - cards.height;
 
     this.failsText = this.game.add.bitmapText(Game.w-200, 10, 'minecraftia', 'Fails: ' + fails, 24);
     this.runningTimeText = this.game.add.bitmapText(20, 20, 'minecraftia','00:00',32);
@@ -124,7 +136,7 @@ Game.Play.prototype = {
 
     }
 
-    if (score >= 8) {
+    if (score >= pairs) {
       gameOver = true;
     }
 
@@ -184,7 +196,7 @@ Game.Play.prototype = {
         gameOver = false;
         fails = 0;
         score = 0;
-        this.game.state.start('Play');
+        this.game.state.start('Menu');
       }
     }
 
