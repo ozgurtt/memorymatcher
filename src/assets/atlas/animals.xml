@@ -1,0 +1,12 @@
+<TextureAtlas imagePath="animals.png">
+	<SubTexture name="elephant.png" x="145" y="0" width="142" height="142"/>
+	<SubTexture name="giraffe.png" x="289" y="144" width="142" height="142"/>
+	<SubTexture name="hippo.png" x="0" y="0" width="143" height="143"/>
+	<SubTexture name="monkey.png" x="288" y="288" width="142" height="142"/>
+	<SubTexture name="panda.png" x="145" y="144" width="142" height="142"/>
+	<SubTexture name="parrot.png" x="432" y="288" width="142" height="142"/>
+	<SubTexture name="penguin.png" x="289" y="0" width="142" height="142"/>
+	<SubTexture name="pig.png" x="0" y="145" width="143" height="142"/>
+	<SubTexture name="rabbit.png" x="144" y="289" width="142" height="142"/>
+	<SubTexture name="snake.png" x="0" y="289" width="142" height="142"/>
+</TextureAtlas>

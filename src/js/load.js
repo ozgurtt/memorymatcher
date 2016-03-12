@@ -1,10 +1,7 @@
 var Game = {
-  w: 800,
-  h: 600
+  w: 1024,
+  h: 768 
 };
-
-// var w = 800;
-// var h = 600;
 
 Game.Boot = function(game) {
   this.game = game;
@@ -13,17 +10,16 @@ Game.Boot = function(game) {
 Game.Boot.prototype = {
   preload: function() {
     // console.log('blah'+Game.w);
-		this.game.stage.backgroundColor = '#FFF';
+		this.game.stage.backgroundColor = '#dcdcdc';
 		this.game.load.image('loading', 'assets/images/loading.png');
 		this.game.load.image('title', 'assets/images/title.png');
 		this.game.load.image('instructions', 'assets/images/instructions.png');
     this.game.load.bitmapFont('minecraftia', 'assets/fonts/font.png', 'assets/fonts/font.xml'); //load default font
 
-
-    // //Scale Image to Fit Window
-    // this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-    // this.game.scale.maxHeight = window.innerHeight;
-    // this.game.scale.maxWidth = window.innerHeight*(Game.w/Game.h);
+    //Scale Image to Fit Window
+    this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    this.game.scale.maxHeight = window.innerHeight;
+    this.game.scale.maxWidth = window.innerHeight*(Game.w/Game.h);
 
   },
   create: function() {
@@ -48,6 +44,12 @@ Game.Load.prototype = {
 
     //Load button for twitter
     this.game.load.image('twitter','assets/images/twitter.png');
+
+    this.game.load.atlasXML('animals', 'assets/images/animals.png', 'assets/atlas/animals.xml');
+    this.game.load.audio('flip', 'assets/audio/flip.wav');
+    this.game.load.audio('shuffle', 'assets/audio/shuffle.wav');
+    this.game.load.audio('match', 'assets/audio/match.wav');
+    this.game.load.audio('applause', 'assets/audio/applause.wav');
 
     // Music Track
     // this.game.load.audio('music','soundtrack.mp3');
