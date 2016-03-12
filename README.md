@@ -2,9 +2,9 @@
 
 Fly to each planet, extract all the surviviros to win.
 
-![screenshot](screenshots/extraction.gif)
+![screenshot](screenshots/memorymatcher.gif)
 
-You can play the game [here](http://divideby5.com/games/extraction).
+You can play the game [here](http://divideby5.com/games/memorymatcher).
 
 ##Tools
 Developed using [Phaser.js](http://phaser.io)
